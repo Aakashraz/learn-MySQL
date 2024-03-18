@@ -42,6 +42,29 @@ VALUES
 
 select * from offices;
 
-insert into offices (officeCode, city, phone, addressLine1, state, country, postalCode, territory)
-value
-    ("000", "Bengaluru", "+0309098340", "1 MG road", "Karnatake", "India", "00560", "Asia");
+# insert into offices (officeCode, city, phone, addressLine1, state, country, postalCode, territory)
+# value
+#     ("000", "Bengaluru", "+0309098340", "1 MG road", "Karnatake", "India", "00560", "Asia");
+
+create table employees (
+    employeeNumber int(11) not null,
+    firstName varchar(50) not null,
+    lastName varchar(50) not null ,
+    extension varchar(10) not null ,
+    email varchar(100) not null ,
+    officeCode varchar(10) not null ,
+    reportsTo int(11) not null ,
+    jobTitle varchar(50) not null ,
+    primary key (employeeNumber),
+    foreign key (reportsTo) references employees (employeeNumber),
+    foreign key (officeCode) references offices (officeCode)
+);
+
+alter table employees
+modify column reportsTo int(11) default null;
+
+insert into employees
+values
+    (1003, "Murphy", "Dianel", "x5800", "dmurphy@gmail.com", "100", null, "President");
+
+select * from employees;
