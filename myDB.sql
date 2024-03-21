@@ -65,6 +65,31 @@ modify column reportsTo int(11) default null;
 
 insert into employees
 values
-    (1003, "Murphy", "Dianel", "x5800", "dmurphy@gmail.com", "100", null, "President");
+    (1003, "Murphy", "Daniel", "x5000", "danielmurphy@gmail.com", "1", "laka", "Vice-President");
 
 select * from employees;
+
+insert into employees
+values
+     (1005, "Muse", "Giani", "x4900", "muse-giant@gmai.com", "2", null,"Vice-President");
+
+create table if not exists customers (
+    customerNumber int(11) not null,
+    customerName varchar(50) not null,
+    contactLastName varchar(50) not null,
+    contactFirstName varchar(50) not null,
+    phone varchar(50) not null,
+    addressLine1 varchar(50) not null,
+    addressLine2 varchar(50) null default null,
+    city varchar(50) not null,
+    state varchar(50) null default null,
+    postalCode varchar(15) null default null,
+    country varchar(50) not null,
+    salesRepEmployeeNumber int(11) null,
+    creditLimit double null default null,
+    customerLocation point not null,
+    primary key (customerNumber),
+    foreign key (salesRepEmployeeNumber) references employees(employeeNumber)
+);
+
+select * from customers;
