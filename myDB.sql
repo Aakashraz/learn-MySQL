@@ -194,6 +194,7 @@ order by buyPrice limit 10;
 select productName, productLine, buyPrice, quantityInStock from products where productLine= "Motorcycles" and quantityInStock>=3000 order by buyPrice desc limit 7;
 
 describe employees;
+# modifying table structure using alter table: adding column named - hiredOn to the table
 alter table employees add hiredOn date;
 
 update employees
@@ -201,4 +202,9 @@ set hiredOn= "2024-04-04"
 where jobTitle= "Sales Representatives";
 
 select firstName, lastName, employees.jobTitle, employees.hiredOn from employees where employees.hiredOn= "2020-01-01";
-select * from employees;
+select * from products;
+
+# alter table employees modify column reportsTo varchar(40);
+
+#  to calculate the sum of total stock in the products table----------------------------
+select sum(quantityInstock) from products;
