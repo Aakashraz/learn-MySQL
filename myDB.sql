@@ -67,8 +67,6 @@ insert into employees
 values
     (1003, "Murphy", "Daniel", "x5000", "danielmurphy@gmail.com", "1", "laka", "Vice-President");
 
-select * from employees;
-
 insert into employees
 values
      (1005, "Muse", "Giani", "x4900", "muse-giant@gmai.com", "2", null,"Vice-President");
@@ -124,8 +122,6 @@ select employeeNumber,officeCode, lastName,reportsTo, jobTitle from employees wh
 # set reportsTo = "1005"
 # where jobTitle= "Sales Rep" and officeCode= "1";
 
-select * from employees;
-
 select customerNumber,customerName, country, creditLimit from customers where country = "usa" and creditLimit>= "105000";
 
 
@@ -154,8 +150,6 @@ CREATE TABLE `productlines` (
                                 `image` mediumblob,
                                 PRIMARY KEY (`productLine`)
 );
-
-show tables;
 
 DROP TABLE IF EXISTS `products`;
 
@@ -208,3 +202,9 @@ select * from products;
 
 #  to calculate the sum of total stock in the products table----------------------------
 select sum(quantityInstock) from products;
+
+describe employees;
+insert into employees value (
+                             1101, 'Mulla', 'Diane', 'x3434', 'dmrul@classicmodels.com', '001', null, 'President', null
+    );
+select * from employees where employeeNumber = 1101;
