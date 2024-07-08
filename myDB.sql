@@ -115,6 +115,17 @@ create table if not exists customers (
     foreign key (salesRepEmployeeNumber) references employees(employeeNumber)
 );
 
+# Information about :-   null default null------------------------
+# In the line creditLimit double null default null,, explicitly mentioning default null is optional when you've already specified null. Here's why:
+#
+# When you declare a column as null, it implicitly allows NULL values and uses NULL as the default if no value is specified during insertion.
+# The default null part is redundant in this case because it's explicitly stating what would happen by default anyway.
+#
+# You have two equivalent options:
+#
+# creditLimit double null,
+# creditLimit double null default null,
+
 select employeeNumber,officeCode, lastName,reportsTo, jobTitle from employees where jobTitle = "Sales Rep" and officeCode= "1";
 
 # update the table column
