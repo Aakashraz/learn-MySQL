@@ -218,4 +218,9 @@ describe employees;
 insert into employees value (
                              1101, 'Mulla', 'Diane', 'x3434', 'dmrul@classicmodels.com', '001', null, 'President', null
     );
-select * from employees where employeeNumber = 1101;
+select * from employees ;
+
+alter table employees rename column officeCode to bankCode;
+alter table employees rename column bankCode to officeCode;
+
+show create table employees;
