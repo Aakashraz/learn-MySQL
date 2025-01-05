@@ -368,3 +368,12 @@ from customers c
 left join payments p
 on c.customerNumber = p.customerNumber
 order by paymentDate desc limit 10;
+
+-- SELF JOIN EXAMPLE:
+-- QUESTION: Show a list of employees with the name & employee number of their manager.
+select e.firstName, e.lastName, e.jobTitle as employeePosition,e.reportsTo,
+        concat(m.firstName," ", m.lastName) as ManagerName, m.reportsTo, m.jobTitle as ManagerJobTitle
+        from employees e
+        left outer join employees m
+        on e.reportsTo = m.employeeNumber
+        order by e.jobTitle;
