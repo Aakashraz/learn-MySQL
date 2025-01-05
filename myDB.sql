@@ -356,3 +356,15 @@ select sum(amount) as `Total Payments`,
 # otherwise it will order the data alphabetically, using month's name first character
 # such as starting from `AUGUST` instead of `JANUARY`.
 
+-- -----------------------------------------------------------------------------------
+-- Combining Tables using Joins
+-- A JOIN clause is used to combine rows from two or more tables, based on a related column between them.
+-- There are four types of joins: inner join, left (outer) join, right (outer) join, and (full) outer join.
+
+-- QUESTION:
+-- Show the 10 most recent payments with customer details (name & phone no.).
+select c.customerName, c.phone, c.customerNumber, p.customerNumber, p.paymentDate
+from customers c
+left join payments p
+on c.customerNumber = p.customerNumber
+order by paymentDate desc limit 10;
