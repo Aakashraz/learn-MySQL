@@ -377,3 +377,22 @@ select e.firstName, e.lastName, e.jobTitle as employeePosition,e.reportsTo,
         left outer join employees m
         on e.reportsTo = m.employeeNumber
         order by e.jobTitle;
+
+select e.employeeNumber, e.lastName, e.firstName, e.reportsTo,
+     concat(m.firstName, " ", m.lastName) as managerName, m.reportsTo as managerReporting
+     from employees e right join employees m
+     on e.reportsTo = m.employeeNumber;
+
+
+-- Indexing in SQL is used to speed up querying, hence, increasing performance.
+
+create index customer_firstName_index on customers (contactFirstName);
+show index from customers;
+
+select * from customers where contactLastName = "young";
+
+-- Creating a View (also a virtual table):
+
+create view usaCustomers as select * from customers where country = "USA";
+-- a view can be queried just like a table.
+select * from usaCustomers where state= "NY";
